@@ -3,7 +3,7 @@
     <head>
     </head>
     <body>
-        <h1>Admin</h1>
+        <h1>Admin page</h1>
         <p>Hello, ${userDetails.username}!</p>
 
         <p>User authorities: ${userAuthorities}</p>
