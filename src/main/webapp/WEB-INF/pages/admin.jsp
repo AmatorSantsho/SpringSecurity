@@ -8,6 +8,6 @@
 
         <p>User authorities: ${userAuthorities}</p>
 
-        <a href="/">Back</a>
+        <a href="welcome">Back</a>
     </body>
 </html>
