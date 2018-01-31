@@ -33,12 +33,61 @@
   </tr>
 </table>
 </form>
-<p> user with role=Role_User</p>
-<p>username:bob</p>
-<p>password:bob</p>
+<p> To entry use:</p>
+<table>
+  <tr>
+    <td>
+      username:
+    </td>
+    <td>
+      user01
+    </td>
+  </tr>
+  <tr>
+    <td>
+      password:
+    </td>
+    <td>
+      user01
+    </td>
+  </tr>
+  <tr>
+    <td>
+      roles:
+    </td>
+    <td>
+      ROLE_USER
+    </td>
+  </tr>
+</table>
 <br>
-<p> user with role=Role_User,Role_Admin</p>
-<p>username:jimi</p>
-<p>password:jimi</p>
+<table>
+  <tr>
+    <td>
+      username:
+    </td>
+    <td>
+      admin
+    </td>
+  </tr>
+  <tr>
+  <td>
+    password:
+  </td>
+  <td>
+    admin
+  </td>
+</tr>
+<tr>
+  <td>
+    roles:
+  </td>
+  <td>
+    ROLE_USER,ROLE_ADMIN
+  </td>
+</tr>
+
+
+</table>
 </body>
 </html>

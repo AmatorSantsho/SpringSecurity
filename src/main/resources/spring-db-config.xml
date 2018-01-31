@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/jdbc
+       http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+
+<!--inizializing and populating DB by start app-->
+<jdbc:initialize-database data-source="dataSource" enabled="true">
+       <jdbc:script location="classpath:db/${database.init}"/>
+       <jdbc:script location="classpath:db/${database.populate}"/>
+</jdbc:initialize-database>
+
+<!--configuring dataSource using placelolder and SpEL-->
+<bean id="dataSource"
+class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+p:driverClassName="${database.driverClassName}"
+      p:url="${database.url}"
+      p:username="${database.username}"
+      p:password="${database.password}"
+        />
+<context:property-placeholder location="classpath:db/jdbc.properties"/>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+          <constructor-arg ref="dataSource"/>
+    </bean>
+
+    <bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+</beans>
