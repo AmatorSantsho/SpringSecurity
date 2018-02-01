@@ -20,7 +20,7 @@ public interface UserService {
 
     List<User> getAll();
 
-    User getUserByEmail(String email)throws NotFoundException;
+    User getUserByName(String name)throws NotFoundException;
 
 
 }

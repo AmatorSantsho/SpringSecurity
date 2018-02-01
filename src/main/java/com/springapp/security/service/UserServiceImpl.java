@@ -49,9 +49,9 @@ private UserRepository repository;
     }
 
     @Override
-    public User getUserByEmail(String email) {
+    public User getUserByName(String name) {
         //assert email-argument to null
-        Assert.notNull(email,"Email must be not null");
-        return  checkNotFound(repository.getUserByEmail(email),"email"+ email);
+        Assert.notNull(name,"Name must be not null");
+        return  checkNotFound(repository.getUserByName(name),"name"+ name);
     }
 }
