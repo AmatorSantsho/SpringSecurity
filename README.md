@@ -14,4 +14,4 @@ InMemory_Auth - example of configuring in-memory authentication for a single use
 
 JDBC_Auth - example of using JDBC based authentication. To use you need Postgresql DB.
 
-UserDetailsService - example authentication of using custom UserDetailsService. To use you need Postgresql DB  
+
