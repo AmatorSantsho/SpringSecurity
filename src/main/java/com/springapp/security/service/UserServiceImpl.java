@@ -4,6 +4,9 @@ import com.springapp.security.model.User;
 import com.springapp.security.repository.UserRepository;
 import com.springapp.security.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -14,7 +17,7 @@ import static com.springapp.security.util.Checking.checkNotFound;
  * Created by 123 on 21.01.2018.
  */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Autowired
 private UserRepository repository;
@@ -53,5 +56,16 @@ private UserRepository repository;
         //assert email-argument to null
         Assert.notNull(name,"Name must be not null");
         return  checkNotFound(repository.getUserByName(name),"name"+ name);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user=repository.getUserByName(username);
+        if (user==null){
+            throw new UsernameNotFoundException("User with " + username + " not found");
+        }
+        UserDetails userDetails=new org.springframework.security.core.userdetails.User(user.getName(),
+                user.getPassword(),user.getRoles());
+        return userDetails;
     }
 }
