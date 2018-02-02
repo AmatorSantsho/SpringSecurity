@@ -1,6 +1,6 @@
 Spring Security. 
 
-Проект реализован на основе Spring MVC архитектуры
+Проект реализован на основе Spring MVC архитектуры. Фронтенд сделан в минимальном стиле с целью не отвлекать пользователя от структуры проекта.
 
 Используемые технологии:
 
@@ -151,14 +151,23 @@ authorities="ROLE_USER" – указывает, какие роли получи
 intercept-url pattern="/**"  - следует указывать последним в списке всех паттернов при настройке доступа к приложению.
 
 Пароль в открытом виде не рекомендуется указывать. Спринг требует наличия декодера или указания типа декодирования. Например {noop}password. Пароль имеет префикс {noop}, чтобы указать DelegatingPasswordEncoderу, что  необходимо использовать NoOpPasswordEncoder. Это не безопасно для производства, но делает чтение в примерах проще. Обычно пароли должны быть хэшированы с использованием BCrypt. Spring начиная с версии 5.0 по умолчанию пароли кодирует, поэтому без указания encodera  приложение работать не будет.
-
-
-       
-
-Branches:
+     
+4. Ветки проекта:
 
 InMemory_Auth - example of configuring in-memory authentication for a single user.
 
 JDBC_Auth - example of using JDBC based authentication. To use you need Postgresql DB.
 
+5. Запуск приложения в IntelliJ IDEA:
 
+       1. Check out from Version Control
+       2. Clone repository to local directory from url https://github.com/AmatorSantsho/SpringSecurity.git
+       3. Create project from clone
+       4. Configure module,SDK,tomcat,postgresql
+       5. Run on server
+
+6. Работа приложения
+ 
+После успешного деплоя приложение будет доступно по адресу http://localhost:8080/security/
+Все запросы к приложению перехватываюся фильтром и проверяются на наличие требуемого контекста безопасности.
+В случае отсутсвия его пользователю предлагается аутентифицироваться на сервере. В зависимости от полученных прав пользователь может совершать определенные действия.
